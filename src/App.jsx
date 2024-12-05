@@ -20,7 +20,7 @@ export default function App() {
           <MDBRow className="justify-content-center align-items-center h-100">
             <MDBCol md="10" lg="8" xl="6">
               <WeatherCard />
-            </MDBCol>
+           </MDBCol>
           </MDBRow>
         </MDBContainer>
       </section>
