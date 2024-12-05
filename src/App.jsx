@@ -24,6 +24,5 @@ export default function App() {
           </MDBRow>
         </MDBContainer>
       </section>
-    </>
-  );
+    </>);
 }
