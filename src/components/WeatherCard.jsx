@@ -1,7 +1,26 @@
 import { MDBCard, MDBCardImage, MDBTypography } from 'mdb-react-ui-kit'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 
 function WeatherCard() {
+
+  const [temperature, setTemperature] = useState("0");
+  const apikey = "";
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?id=3837702&units=metric&appid=${apikey}`)
+        console.log(response.data)
+        setTemperature(response.data.main.temp)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData();
+
+  }, [])
+
   return (
     <MDBCard
       className="bg-dark text-white"
@@ -22,7 +41,7 @@ function WeatherCard() {
         <MDBTypography tag="h4" className="mb-0">
           Juneau, Alaska, US
         </MDBTypography>
-        <p className="display-2 my-3">1.28°C</p>
+        <p className="display-2 my-3">{temperature}</p>
         <p className="mb-2">
           Feels Like: <strong>-1.08 °C</strong>
         </p>
